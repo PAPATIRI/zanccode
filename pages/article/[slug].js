@@ -8,13 +8,19 @@ import { useEffect, useState } from 'react';
 import styles from './CustomImgStyle.module.css';
 
 const Article = ({ article, categories }) => {
+    const [scrolled, setScrolled] = useState(false);
     const imageUrl = article.attributes.image;
     const [contentArticle, setContentArticle] = useState(article.attributes.content);
+
+    const heightOnScrollHandler = () => {
+        window.scrollY >= 2 ? setScrolled(true) : setScrolled(false);
+    };
 
     useEffect(() => {
         setContentArticle(
             contentArticle.split('/uploads/').join(`${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/`)
         );
+        window.addEventListener('scroll', heightOnScrollHandler);
     }, []);
 
     const seo = {
@@ -27,7 +33,10 @@ const Article = ({ article, categories }) => {
     return (
         <Layout categories={categories.data}>
             <Seo seo={seo} />
-            <div className="pt-20 px-8 lg:px-24 xl:px-48 2xl:px-80">
+            <div
+                className={`pt-20 px-8 lg:px-24 xl:px-48 2xl:px-80 ${
+                    scrolled ? 'h-fit' : 'h-screen'
+                }`}>
                 <div className="flex flex-col items-center">
                     <h1 className="mb-2 font-black text-center capitalize text-xl lg:text-3xl text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 bg-clip-text">
                         {article.attributes.title}

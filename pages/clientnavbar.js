@@ -21,8 +21,8 @@ export default function ClientNavbar({ categories }) {
     return (
         <div
             onClick={() => setShowNav(!showNav)}
-            className={`bg-slate-900/80 md:hidden fixed ${
-                showNav ? 'w-screen h-screen top-0 right-0' : 'h-0 w-fit top-4 right-8'
+            className={`bg-slate-900/40 md:hidden fixed  ${
+                showNav ? 'w-screen h-screen top-0 right-0' : 'h-0 top-4 right-8'
             }`}>
             <div
                 className="bg-transparent mb-3 flex items-center justify-end"
@@ -35,8 +35,8 @@ export default function ClientNavbar({ categories }) {
             </div>
             <div className="flex justify-end mr-8">
                 <div
-                    className={`transition-opacity duration-300 w-fit text-center bg-indigo-100 p-4 text-indigo-700 rounded ${
-                        showNav ? 'visible opacity-100 ease-in' : 'invisible opacity-0 ease-out'
+                    className={`transition-opacity duration-300 w-fit text-center bg-indigo-100 text-indigo-700 rounded ${
+                        showNav ? 'visible opacity-100 ease-in' : 'hidden opacity-0 ease-out'
                     }`}>
                     <Link className="block px-4 py-2" href={`/`}>
                         All

@@ -41,10 +41,10 @@ export default function ClientNavbar({ categories }) {
                     <Link className="block px-4 py-2" href={`/`}>
                         All
                     </Link>
-                    {categories.map((cat) => {
+                    {categories.map((cat, index) => {
                         return (
                             <Link
-                                key={cat.attributes.id}
+                                key={index + 1}
                                 className="block px-4 py-2"
                                 href={`/category/${cat.attributes.slug}`}>
                                 {cat.attributes.name}

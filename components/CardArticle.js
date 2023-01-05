@@ -4,7 +4,7 @@ import ImageCustom from './ImageCustom';
 const CardArticle = ({ article }) => {
     return (
         <Link href={`/article/${article.attributes.slug}`}>
-            <div className="bg-transparent rounded-md max-w-[400px] min-h-[270px] p-5 hover:bg-gray-900 transition-all duration-75">
+            <div className="bg-transparent rounded-md max-w-[400px] min-h-[270px] p-5 transition-all duration-75 hover:bg-gradient-to-br hover:from-blue-900 hover:via-indigo-900 hover:to-violet-900">
                 <div className="rounded-md object-cover">
                     <ImageCustom
                         width={400}
@@ -20,7 +20,7 @@ const CardArticle = ({ article }) => {
                         {article.attributes.category.data.attributes.name}
                     </p>
                     <p
-                        className="text-xl md:text-2xl text-transparent font-bold capitalize bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 bg-clip-text"
+                        className="text-xl md:text-2xl text-transparent font-bold capitalize bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text"
                         id="title">
                         {article.attributes.title}
                     </p>

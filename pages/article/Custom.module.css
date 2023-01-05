@@ -1,0 +1,38 @@
+.imageCustomStyle > div > figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imageCustomStyle > div > figure > img {
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.imageCustomStyle > div h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.imageCustomStyle > div pre {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background-image: linear-gradient(
+        to bottom right,
+        rgb(30 58 138),
+        rgb(49 46 129),
+        rgb(76 29 149)
+    );
+    background-size: 400%;
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 768px) {
+    .imageCustomStyle > div h2 {
+        font-size: 20px;
+    }
+}

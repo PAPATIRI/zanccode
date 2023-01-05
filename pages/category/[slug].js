@@ -6,6 +6,7 @@ import { fetchAPI } from '../../lib/api';
 
 const Category = ({ category, categories }) => {
     const [scrolled, setScrolled] = useState(false);
+
     const seo = {
         metaTitle: category.attributes.name,
         metaDescription: `Semua artikel tentang ${category.attributes.name}`,

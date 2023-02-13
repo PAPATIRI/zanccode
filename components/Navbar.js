@@ -1,41 +1,108 @@
 import Link from 'next/link';
+import { Bars3CenterLeftIcon } from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Navbar = ({ categories }) => {
     const [navbarBorder, setNavbarBorder] = useState(false);
+    const router = useRouter();
 
     const navbarOnScrollBehavior = () => {
         window.scrollY >= 80 ? setNavbarBorder(true) : setNavbarBorder(false);
     };
+
+    const [showNav, setShowNav] = useState(false);
+
+    const handleClick = () => {
+        setShowNav(!showNav);
+    };
+
+    useEffect(() => {
+        if (typeof window != undefined) {
+            window.addEventListener('click', handleClick);
+        }
+
+        return window.removeEventListener('click', handleClick);
+    }, []);
 
     useEffect(() => {
         window.addEventListener('scroll', navbarOnScrollBehavior);
     }, []);
 
     return (
-        <nav
-            className={`hidden md:block py-4 h-14 fixed top-0 left-0 right-0 bg-transparent px-0 md:px-40 ${
-                navbarBorder ? 'bg-gray-900/95' : ''
-            }`}>
-            <div className="flex justify-center">
-                <ul className="flex items-center justify-center gap-x-8">
-                    <Link href={'/'} className="text-base block capitalize text-gray-100">
-                        All
-                    </Link>
-                    {categories.map((category) => {
-                        return (
-                            <li key={category.id}>
+        <>
+            {/* navbar desktop */}
+            <nav
+                className={`hidden md:block py-8 h-14 fixed top-0 left-0 right-0 bg-transparent px-0 md:px-40 ${
+                    navbarBorder ? 'bg-gray-900/95' : ''
+                }`}>
+                <div className="flex justify-center">
+                    <ul className="flex items-center justify-center gap-x-8">
+                        <Link
+                            href={'/'}
+                            className={` ${
+                                router.pathname === '/'
+                                    ? 'text-transparent font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 bg-clip-text'
+                                    : 'text-base block capitalize text-gray-100'
+                            }`}>
+                            All
+                        </Link>
+                        {categories.map((category) => {
+                            return (
+                                <li key={category.id}>
+                                    <Link
+                                        className={` ${
+                                            router.query.slug === `${category.attributes.slug}`
+                                                ? 'text-transparent font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 bg-clip-text'
+                                                : 'text-base block capitalize text-gray-100'
+                                        }`}
+                                        onClick={() => console.log(router.query.slug)}
+                                        href={`/category/${category.attributes.slug}`}>
+                                        {category.attributes.name}
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            </nav>
+            {/* navbar mobile */}
+            <nav
+                onClick={() => setShowNav(!showNav)}
+                className={`bg-slate-900/40 md:hidden fixed  ${
+                    showNav ? 'w-screen h-screen top-0 right-0' : 'h-0 top-4 right-8'
+                }`}>
+                <div
+                    className="bg-transparent mb-3 flex items-center justify-end"
+                    onClick={() => setShowNav(!showNav)}>
+                    <Bars3CenterLeftIcon
+                        className={`bg-indigo-600 p-1 w-10 h-10 rounded  text-indigo-200 rotate-180 ${
+                            showNav ? 'mr-8 mt-4' : 'mr-0 mt-0'
+                        }`}
+                    />
+                </div>
+                <div className="flex justify-end mr-8">
+                    <div
+                        className={`transition-opacity duration-300 w-fit text-center bg-indigo-100 text-indigo-700 rounded ${
+                            showNav ? 'visible opacity-100 ease-in' : 'hidden opacity-0 ease-out'
+                        }`}>
+                        <Link className="block px-4 py-2" href={`/`}>
+                            All
+                        </Link>
+                        {categories.map((cat, index) => {
+                            return (
                                 <Link
-                                    className="text-base block capitalize text-gray-100"
-                                    href={`/category/${category.attributes.slug}`}>
-                                    {category.attributes.name}
+                                    key={index + 1}
+                                    className="block px-4 py-2"
+                                    href={`/category/${cat.attributes.slug}`}>
+                                    {cat.attributes.name}
                                 </Link>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-        </nav>
+                            );
+                        })}
+                    </div>
+                </div>
+            </nav>
+        </>
     );
 };
 

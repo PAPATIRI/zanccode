@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import SwitcherDarkmode from './SwitcherDarkmode';
 
-const Navbar = ({ categories, detailpage }) => {
+const Navbar = ({ categories }) => {
     const [navbarBorder, setNavbarBorder] = useState(false);
     const router = useRouter();
 
@@ -34,18 +34,15 @@ const Navbar = ({ categories, detailpage }) => {
         <>
             {/* navbar desktop */}
             <nav
-                className={`hidden lg:block py-6 fixed top-0 left-0 right-0 bg-transparent px-0 md:px-64 ${
-                    navbarBorder ? 'bg-indigo-100/95 shadow dark:bg-gray-900/95' : ''
+                className={`hidden md:block py-8 h-14 fixed top-0 left-0 right-0 bg-transparent px-0 md:px-40 ${
+                    navbarBorder ? 'bg-gray-900/95' : ''
                 }`}>
                 <div className="flex justify-center">
                     <div className=""></div>
-                    <ul
-                        className={`flex-1 flex items-center justify-center gap-x-4 lg:gap-x-8 ${
-                            detailpage ? 'hidden' : 'block'
-                        }`}>
+                    <ul className="flex-1 flex items-center justify-center gap-x-8">
                         <Link
                             href={'/'}
-                            className={`${
+                            className={` ${
                                 router.pathname === '/'
                                     ? 'text-transparent font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 bg-clip-text'
                                     : 'text-base block capitalize text-gray-800 dark:text-gray-100'
@@ -59,7 +56,7 @@ const Navbar = ({ categories, detailpage }) => {
                                         className={` ${
                                             router.query.slug === `${category.attributes.slug}`
                                                 ? 'text-transparent font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 bg-clip-text'
-                                                : 'text-base block capitalize text-gray-700 dark:text-indigo-100'
+                                                : 'text-base block capitalize text-gray-800 dark:text-gray-100'
                                         }`}
                                         onClick={() => console.log(router.query.slug)}
                                         href={`/category/${category.attributes.slug}`}>
@@ -69,7 +66,7 @@ const Navbar = ({ categories, detailpage }) => {
                             );
                         })}
                     </ul>
-                    <div className={`${detailpage && 'w-full flex justify-end'}`}>
+                    <div className="ml-5">
                         <SwitcherDarkmode />
                     </div>
                 </div>
@@ -77,7 +74,7 @@ const Navbar = ({ categories, detailpage }) => {
             {/* navbar mobile */}
             <nav
                 onClick={() => setShowNav(!showNav)}
-                className={`bg-slate-900/40 lg:hidden fixed  ${
+                className={`bg-slate-900/40 dark:bg-purple-700 md:hidden fixed  ${
                     showNav ? 'w-screen h-screen top-0 right-0' : 'h-0 top-4 right-8'
                 }`}>
                 <div
@@ -91,7 +88,7 @@ const Navbar = ({ categories, detailpage }) => {
                 </div>
                 <div className="flex justify-end mr-8">
                     <div
-                        className={`transition-opacity duration-300 w-fit text-center bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-200 rounded ${
+                        className={`transition-opacity duration-300 w-fit text-center bg-indigo-100 text-indigo-700 rounded ${
                             showNav ? 'visible opacity-100 ease-in' : 'hidden opacity-0 ease-out'
                         }`}>
                         <Link className="block px-4 py-2" href={`/`}>
@@ -107,7 +104,7 @@ const Navbar = ({ categories, detailpage }) => {
                                 </Link>
                             );
                         })}
-                        <div className="px-4 py-5 flex justify-center">
+                        <div className="px-4 py-2 my-auto">
                             <SwitcherDarkmode />
                         </div>
                     </div>

@@ -5,7 +5,7 @@ class MyCustomDocument extends Document {
         return (
             <Html>
                 <Head></Head>
-                <body className="bg-gradient-to-br from-gray-900 to-indigo-900">
+                <body className="flex flex-col items-center bg-indigo-100 dark:bg-gradient-to-br from-gray-900 to-indigo-900">
                     <Main />
                     <NextScript />
                 </body>

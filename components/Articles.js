@@ -11,7 +11,7 @@ const Articles = ({ articles }) => {
     }
 
     return (
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
+        <div className="mt-4 lg:mt-10 flex flex-wrap justify-center lg:justify-start gap-2">
             {sortedArticle.map((article) => {
                 return (
                     <CardArticle article={article} key={`article__${article.attributes.slug}`} />

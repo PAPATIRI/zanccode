@@ -17,12 +17,9 @@ export default function Home({ articles, categories, homepage }) {
     return (
         <Layout categories={categories}>
             <Seo seo={homepage.attributes.seo} />
-            <div
-                className={`bg-transparent pt-20 md:pt-32 px-8 lg:px-24 xl:px-44 2xl:px-80 ${
-                    scrolled ? 'h-fit' : 'h-screen'
-                }`}>
+            <div className={`bg-transparent pt-32 ${scrolled ? 'h-[1000px]' : 'h-screen'}`}>
                 <div className="mr-0 mb-8 md:mb-16 lg:mr-40 lg:pl-8">
-                    <h1 className="text-transparent pr-0 pl-0 lg:pl-3 xl:pl-5 lg:pr-10 text-center lg:text-left text-4xl md:text-5xl lg:text-6xl font-black uppercase bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-400% animate-left-to-right bg-clip-text ">
+                    <h1 className="text-transparent w-full md:w-[90%] text-center lg:text-left text-4xl md:text-5xl lg:text-6xl font-black uppercase bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-400% animate-left-to-right bg-clip-text ">
                         {homepage.attributes.hero.title}{' '}
                         <a href="https://www.instagram.com/zancc_/" className="italic">
                             syarif th.

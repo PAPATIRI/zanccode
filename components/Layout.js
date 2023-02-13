@@ -1,12 +1,10 @@
-import ClientNavbar from '../pages/clientnavbar';
 import Navbar from './Navbar';
 
-const Layout = ({ children, categories }) => {
+const Layout = ({ children, categories, detailpage }) => {
     return (
         <>
-            <ClientNavbar categories={categories} />
-            <Navbar categories={categories} />
-            {children}
+            <Navbar detailpage={detailpage} categories={categories} />
+            <div className="max-w-[1000px]">{children}</div>
         </>
     );
 };

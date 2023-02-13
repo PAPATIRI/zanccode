@@ -1,4 +1,7 @@
-import Navbar from './Navbar';
+import dynamic from 'next/dynamic';
+/* import Navbar from './Navbar'; */
+
+const Navbar = dynamic(() => import('./Navbar'), { ssr: false });
 
 const Layout = ({ children, categories, detailpage }) => {
     return (

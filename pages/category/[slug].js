@@ -23,10 +23,7 @@ const Category = ({ category, categories }) => {
     return (
         <Layout categories={categories.data}>
             <Seo seo={seo} />
-            <div
-                className={`pt-24 px-8 md:px-24 xl:px-48 2xl:px-80 md:h-screen ${
-                    scrolled ? 'h-fit' : 'h-screen'
-                }`}>
+            <div className={`pt-24 px-4 lg:px-36 md:h-screen ${scrolled ? 'h-fit' : 'h-screen'}`}>
                 <h1 className="text-center font-black uppercase text-3xl lg:text-5xl text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-300% animate-left-to-right bg-clip-text ">
                     {category.attributes.name}
                 </h1>

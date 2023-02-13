@@ -44,7 +44,7 @@ const Article = ({ article, categories }) => {
         <Layout detailpage categories={categories.data}>
             <Seo seo={seo} />
             <div
-                className={`px-4 lg:px-36 pt-32 transition duration-500 h-full ease-in-out'
+                className={`px-4 lg:px-36 pt-16 h-screen'
                 }`}>
                 <button
                     type="button"

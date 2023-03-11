@@ -3,7 +3,6 @@ import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 import { fetchAPI } from '../../lib/api';
 import DOMPurify from 'isomorphic-dompurify';
-import Moment from 'react-moment';
 import { useEffect, useState } from 'react';
 import styles from './Custom.module.css';
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
@@ -32,6 +31,12 @@ const Article = ({ article, categories }) => {
         );
         window.addEventListener('scroll', heightOnScrollHandler);
     }, []);
+
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
 
     const seo = {
         metaTitle: article.attributes.title,
@@ -62,7 +67,10 @@ const Article = ({ article, categories }) => {
                             By {article.attributes.author.data.attributes.name}{' '}
                         </span>
                         <span className="text-gray-600 dark:text-slate-300">
-                            <Moment format="MMM Do YYYY">{article.attributes.publishedAt}</Moment>
+                            {new Date(article.attributes.publishedAt).toLocaleDateString(
+                                'id-ID',
+                                options
+                            )}
                         </span>
                     </div>
                     <ImageCustom

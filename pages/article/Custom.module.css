@@ -28,7 +28,7 @@
         rgb(76 29 149)
     );
     background-size: 400%;
-    overflow-y: scroll;
+    overflow-x: auto;
 }
 
 @media screen and (max-width: 768px) {

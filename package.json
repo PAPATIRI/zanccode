@@ -4,7 +4,7 @@
     "private": true,
     "homepage": "https://zanccode.site",
     "scripts": {
-        "dev": "node server.js",
+        "dev": "next dev",
         "build": "next build",
         "start": "NODE_ENV=production node server.js",
         "lint": "next lint",
@@ -25,7 +25,6 @@
         "react-dom": "18.2.0",
         "react-icons": "^4.7.1",
         "react-markdown": "^8.0.4",
-        "react-moment": "^1.1.2",
         "react-toggle-dark-mode": "^1.1.1"
     },
     "devDependencies": {

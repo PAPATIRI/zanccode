@@ -5,19 +5,10 @@ import { fetchAPI } from '../lib/api';
 import { useEffect, useState } from 'react';
 
 export default function Home({ articles, categories, homepage }) {
-    const [scrolled, setScrolled] = useState(false);
-
-    const heightOnScrollHandler = () => {
-        window.scrollY >= 2 ? setScrolled(true) : setScrolled(false);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', heightOnScrollHandler);
-    }, []);
     return (
         <Layout categories={categories}>
             <Seo seo={homepage.attributes.seo} />
-            <div className={`bg-transparent pt-32 ${scrolled ? 'h-[1000px]' : 'h-screen'}`}>
+            <div className={'bg-transparent py-32 h-fit'}>
                 <div className="mr-0 mb-8 md:mb-16 lg:mr-40 lg:pl-8">
                     <h1 className="text-transparent w-full md:w-[90%] text-center lg:text-left text-4xl md:text-5xl lg:text-6xl font-black uppercase bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-400% animate-left-to-right bg-clip-text ">
                         {homepage.attributes.hero.title}{' '}
